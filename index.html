@@ -54,6 +54,7 @@
             display: none;
             bottom: -110px;
             right: 1px;
+            opacity: 0;
             width: 300px;
             height: 100px;
             padding: 0 10px;
@@ -62,19 +63,31 @@
             color: #222;
             background-color: #fff;
             filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+            transition: all ease-out 0.3s;
+        }
+        #glossy .topbar .style_row .style_item .style_explain.active{
+            display: flex;
+            opacity: 1;
         }
         #glossy .topbar .style_row .style_item{
+            border-radius: 50%;
+            display: inline-block;
+            padding: 2px;
+            border: #222 solid 0.5px;
+        }
+        #glossy .topbar .style_row .style_item .style_img{
             width: 32px;
             height: 32px;
             display: block;
             border-radius: 50%;
+            outline: 3px solid #fff;
         }
-        #glossy .topbar .style_row .style_item:hover{
+        #glossy .topbar .style_row .style_item .style_img:hover{
             width: 32px;
             height: 32px;
             border-radius: 50%;
             cursor: pointer;
-            transform: scale(0.8);
+            transform: scale(0.95);
         }
         #glossy .topbar .style_row .style_item:nth-child(1){
             background-image: url('https://hillsmade.com/cdn/shop/files/ebony.png?v=1652772607&width=80');
@@ -87,18 +100,6 @@
         }
         #glossy .topbar .style_row .style_item:nth-child(4){
             background-image: url('https://hillsmade.com/cdn/shop/files/maple.png?v=1637740918&width=80');
-        }
-        #glossy .topbar .style_row .style_item:nth-child(1):hover .style_explain.one{
-            display: flex;
-        }
-        #glossy .topbar .style_row .style_item:nth-child(2):hover .style_explain.two{
-            display: flex;
-        }
-        #glossy .topbar .style_row .style_item:nth-child(3):hover .style_explain.three{
-            display: flex;
-        }
-        #glossy .topbar .style_row .style_item:nth-child(4):hover .style_explain.four{
-            display: flex;
         }
         #glossy main{
             padding-top: 80px;
@@ -129,6 +130,9 @@
             padding: 12px 32px;
             border-radius: 555px;
         }
+        #glossy main .section_content .content_text a:hover{
+            background-color: #111;
+        }
         #glossy main .section_content .content_text p{
             margin-top: 30px;
         }
@@ -149,6 +153,23 @@
             height: auto;
             width: auto;
             object-fit: cover;
+            position: relative;
+        }
+        #glossy main .section_content .content_img_row .content_card .another_img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            opacity: 0;
+            z-index: 5;
+            transition: all ease-out 0.3s;
+            cursor: pointer;
+        }
+        #glossy main .section_content .content_img_row .content_card .another_img.active{
+            opacity: 1;
         }
         #glossy main .section_content .content_img_row .content_card .content_card_title{
             margin-bottom: 5px;
@@ -159,6 +180,7 @@
             border-radius: 12px;
             width: 100%;
             height: auto;
+            z-index: 3;
         }
         #glossy main .badge{
             border-radius: 8px;
@@ -239,25 +261,25 @@
             <ul class="style_row">
                 <a href="#ebony" class="style_item">
                     <span class="style_img"></span>
-                    <div class="style_explain one">
+                    <div class="style_explain">
                         Ebony is our darkest and richest wood, for an incredibly sleek and timeless finish.
                     </div>
                 </a>
                 <a href="#walnut" class="style_item">
                     <span class="style_img"></span>
-                    <div class="style_explain two">
+                    <div class="style_explain">
                         Walnut matches the original black interior's OEM Dashboard, showcasing rich tones and undeniable elegance. 
                     </div>
                 </a>
                 <a href="#black-ash" class="style_item">
                     <span class="style_img"></span>
-                    <div class="style_explain three">
+                    <div class="style_explain">
                         Black Ash is a sophisticated matte black wood finish, for a modern & sleek look. 
                     </div>
                 </a>
                 <a href="#maple" class="style_item four">
                     <span class="style_img"></span>
-                    <div class="style_explain four">
+                    <div class="style_explain">
                         Maple is a graceful wood finish with a golden white appearance, perfect for a timeless interior.
                     </div>
                 </a>
@@ -277,7 +299,10 @@
                     </section>
                     <section class="content_img_row">
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
                             <p class="price">$189</p>
                             <div class="stars">
@@ -291,7 +316,10 @@
                             <span class="badge blue">Best seller</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" class="another_img" alt="">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -305,7 +333,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668"  alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
                             <p class="price">$349</p>
                             <div class="stars">
@@ -319,7 +350,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -346,7 +380,10 @@
                     </section>
                     <section class="content_img_row">
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399"  alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
                             <p class="price">$189</p>
                             <div class="stars">
@@ -360,7 +397,10 @@
                             <span class="badge blue">Best seller</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -374,7 +414,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
                             <p class="price">$349</p>
                             <div class="stars">
@@ -388,7 +431,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -415,7 +461,10 @@
                     </section>
                     <section class="content_img_row">
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
                             <p class="price">$189</p>
                             <div class="stars">
@@ -429,7 +478,10 @@
                             <span class="badge blue">Best seller</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -443,7 +495,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
                             <p class="price">$349</p>
                             <div class="stars">
@@ -457,7 +512,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -483,7 +541,10 @@
                     </section>
                     <section class="content_img_row">
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
                             <p class="price">$189</p>
                             <div class="stars">
@@ -497,7 +558,10 @@
                             <span class="badge blue">Best seller</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -511,7 +575,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
                             <p class="price">$349</p>
                             <div class="stars">
@@ -525,7 +592,10 @@
                             <span class="badge yellow">Top rated</span>
                         </div>
                         <div class="content_card">
-                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#">
+                                <img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt="">
+                                <img src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt="" class="another_img">
+                            </a>
                             <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
                             <p class="price">$219</p>
                             <div class="stars">
@@ -559,6 +629,31 @@
         window.addEventListener('scroll', () => {
             content_text.forEach((content_text) => {
                 observer.observe(content_text);
+            })
+        });
+
+        const style_button = document.querySelectorAll('.style_item');
+        const style_explain = document.querySelectorAll('.style_explain');
+        style_button.forEach((style__item)=>{
+            style__item.addEventListener('mouseenter', () => {
+                style_explain.forEach((style_explain)=>{
+                    style_explain.classList.add('active');
+                })
+            })
+            style__item.addEventListener('mouseleave', () => {
+                    style_explain.forEach((style_explain)=>{
+                        style_explain.classList.remove('active');
+                    });
+            })
+        });
+
+        const content_card_img = document.querySelectorAll('.another_img');
+        content_card_img.forEach((content_card_img_) => {
+            content_card_img_.addEventListener('mouseenter', () => {
+                content_card_img_.classList.add('active');
+            })
+            content_card_img_.addEventListener('mouseleave', () => {
+                content_card_img_.classList.remove('active');
             })
         });
     </script>
