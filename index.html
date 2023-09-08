@@ -37,6 +37,7 @@
             align-items: center;
             padding: 12px;
             border-bottom: 0.3px solid #444;
+            z-index: 10;
         }
         #glossy .topbar .topbar_title{
             font-weight: 500;
@@ -119,6 +120,8 @@
         #glossy main .section_content .content_text{
             width: calc((100% - 32px)/2);
             line-height: 1.5;
+            height: fit-content;
+            transition: all ease-out 0.3s;
         }
         #glossy main .section_content .content_text a{
             color: #fff;
@@ -139,7 +142,7 @@
         #glossy main .section_content .content_img_row{
             width: calc((100% - 32px)/2);
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: 1fr 1fr;
             grid-gap: 10px;
         }
         #glossy main .section_content .content_img_row .content_card{
@@ -172,10 +175,9 @@
             border: solid 1px #f1c80e;
             color: #f1c80e;
         }
-        .fixed {
-            position: fixed;
-            left: auto;
-            top: auto;
+        .sticky {
+            position: sticky;
+            top: 100px;
         }
 
         @media (max-width:1075px) {
@@ -190,11 +192,16 @@
                 padding-top: 50px;
                 flex-wrap: wrap;
             }
+            .sticky {
+            position: relative;
+            top: auto;
+        }
+            
         #glossy main .section_content .content_img_row{
             width: 100%;
             display: grid;
             padding-right: 15px;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-gap: 15px;
             padding-top: 40px;
         }
@@ -208,7 +215,7 @@
             #glossy main .section_content .content_img_row{
             width: 100%;
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: 1fr 1fr;
             grid-gap: 15px;
             padding-top: 40px;
         }
@@ -537,29 +544,22 @@
     </section>
 
     <script>
-        const content = document.querySelectorAll('.content_img_row');
+        const content = document.querySelectorAll('.section_content');
         const content_text = document.querySelectorAll('.content_text');
-        window.addEventListener("scroll", (e) => {
-            e.preventDefault();
-            const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    content_text.forEach((contenttext) => {
-                        contenttext.style.overflow = 'auto';
-                        document.body.overflow = 'hidden';
-                    })
+                    entry.target.classList.add('sticky');
                 }
                 else{
-                    content_text.forEach((contenttext) => {
-                        contenttext.style.overflow = 'inherit';
-                        document.body.overflow = 'hidden';
-                    })
+                    entry.target.classList.remove('sticky');
                 }
             })
-        }, { threshold: 0.5 });
-            content.forEach((item) => {
-                observer.observe(item);
-            });
+        })
+        window.addEventListener('scroll', () => {
+            content_text.forEach((content_text) => {
+                observer.observe(content_text);
+            })
         });
     </script>
 </body>
