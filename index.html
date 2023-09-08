@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Glossy section</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            background-color: #eee;
+        }
+        #glossy{
+            display: flex;
+            justify-content: center;
+        }
+        #glossy a{
+            text-decoration: none;
+        }
+
+        #glossy .topbar{
+            position: fixed;
+            background-color: #eee;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 0.3px solid #444;
+        }
+        #glossy .topbar .topbar_title{
+            font-weight: 500;
+            font-size: 17px;
+        }
+        #glossy .topbar .style_row{
+            display: flex;
+            gap: 10px;
+            position: relative;
+            list-style: none;
+        }
+        #glossy .topbar .style_row .style_item .style_explain{
+            position: absolute;
+            display: none;
+            bottom: -110px;
+            right: 1px;
+            width: 300px;
+            height: 100px;
+            padding: 0 10px;
+            align-items: center;
+            border-radius: 8px;
+            color: #222;
+            background-color: #fff;
+            filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+        }
+        #glossy .topbar .style_row .style_item{
+            width: 32px;
+            height: 32px;
+            display: block;
+            border-radius: 50%;
+        }
+        #glossy .topbar .style_row .style_item:hover{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: scale(0.8);
+        }
+        #glossy .topbar .style_row .style_item:nth-child(1){
+            background-image: url('https://hillsmade.com/cdn/shop/files/ebony.png?v=1652772607&width=80');
+        }
+        #glossy .topbar .style_row .style_item:nth-child(2){
+            background-image: url('https://hillsmade.com/cdn/shop/files/walnut.png?v=1637740978&width=80');
+        }
+        #glossy .topbar .style_row .style_item:nth-child(3){
+            background-image: url('https://hillsmade.com/cdn/shop/files/black-ash.png?v=1652768220&width=80');
+        }
+        #glossy .topbar .style_row .style_item:nth-child(4){
+            background-image: url('https://hillsmade.com/cdn/shop/files/maple.png?v=1637740918&width=80');
+        }
+        #glossy .topbar .style_row .style_item:nth-child(1):hover .style_explain.one{
+            display: flex;
+        }
+        #glossy .topbar .style_row .style_item:nth-child(2):hover .style_explain.two{
+            display: flex;
+        }
+        #glossy .topbar .style_row .style_item:nth-child(3):hover .style_explain.three{
+            display: flex;
+        }
+        #glossy .topbar .style_row .style_item:nth-child(4):hover .style_explain.four{
+            display: flex;
+        }
+        #glossy main{
+            padding-top: 80px;
+            margin-bottom: 80px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #glossy main .section_content{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            border-bottom: 1px solid #444444a6;
+            padding-bottom: 24px;
+            padding-top: 50px;
+        }
+        #glossy main .section_content .content_text{
+            width: calc((100% - 32px)/2);
+            line-height: 1.5;
+        }
+        #glossy main .section_content .content_text a{
+            color: #fff;
+            background-color: #222;
+            padding: 12px 32px;
+            border-radius: 555px;
+        }
+        #glossy main .section_content .content_text p{
+            margin-top: 30px;
+        }
+        #glossy main .section_content .content_text span{
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        #glossy main .section_content .content_text h2{
+            font-size: 35px;
+        }
+        #glossy main .section_content .content_img_row{
+            width: calc((100% - 32px)/2);
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 10px;
+        }
+        #glossy main .section_content .content_img_row .content_card{
+            height: auto;
+            width: auto;
+            object-fit: cover;
+        }
+        #glossy main .section_content .content_img_row .content_card .content_card_title{
+            margin-bottom: 5px;
+            display: inline-block;
+            color: #222;
+        }
+        #glossy main .section_content .content_img_row .content_card .content_card_img{
+            border-radius: 12px;
+            width: 100%;
+            height: auto;
+        }
+        #glossy main .badge{
+            border-radius: 8px;
+            font-size: 11px;
+            padding: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        #glossy main .badge.blue{
+            border: solid 1px blue;
+            color: blue;
+        }
+        #glossy main .badge.yellow{
+            border: solid 1px #f1c80e;
+            color: #f1c80e;
+        }
+        .fixed {
+            position: fixed;
+            left: auto;
+            top: auto;
+        }
+
+        @media (max-width:1075px) {
+            #glossy main .section_content{
+                display: flex;
+                justify-content: space-around;
+                max-width: 1300px;
+                margin-left: auto;
+                margin-right: auto;
+                border-bottom: 1px solid #444444a6;
+                padding-bottom: 24px;
+                padding-top: 50px;
+                flex-wrap: wrap;
+            }
+        #glossy main .section_content .content_img_row{
+            width: 100%;
+            display: grid;
+            padding-right: 15px;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 15px;
+            padding-top: 40px;
+        }
+        #glossy main .section_content .content_text{
+            width: 100%;
+            height: 100%;
+            line-height: 1.5;
+        }
+        }
+        @media (max-width:770px) {
+            #glossy main .section_content .content_img_row{
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 15px;
+            padding-top: 40px;
+        }
+        #glossy main .section_content .content_text p{
+            margin-top: 20px;
+        }
+        #glossy main .section_content .content_text span{
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        #glossy main .section_content .content_text h2{
+            font-size: 28px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <section id="glossy">
+        <header class="topbar">
+            <span class="topbar_title">Select a finish</span>
+            <ul class="style_row">
+                <a href="#ebony" class="style_item">
+                    <span class="style_img"></span>
+                    <div class="style_explain one">
+                        Ebony is our darkest and richest wood, for an incredibly sleek and timeless finish.
+                    </div>
+                </a>
+                <a href="#walnut" class="style_item">
+                    <span class="style_img"></span>
+                    <div class="style_explain two">
+                        Walnut matches the original black interior's OEM Dashboard, showcasing rich tones and undeniable elegance. 
+                    </div>
+                </a>
+                <a href="#black-ash" class="style_item">
+                    <span class="style_img"></span>
+                    <div class="style_explain three">
+                        Black Ash is a sophisticated matte black wood finish, for a modern & sleek look. 
+                    </div>
+                </a>
+                <a href="#maple" class="style_item four">
+                    <span class="style_img"></span>
+                    <div class="style_explain four">
+                        Maple is a graceful wood finish with a golden white appearance, perfect for a timeless interior.
+                    </div>
+                </a>
+            </ul>
+        </header>
+        <main>
+            <section class="container">
+                <section class="section_content" id="ebony">
+                    <section class="content_text">
+                        <h2>Ebony</h2>
+                        <p>
+                            Created to resemble the rare wood originated from the nation on Gabon, 
+                            Ebony is a beautifully rich wood finish, known for its varied dark grains. 
+                            Ebony is perfect for giving your Tesla an incredibly classy and timeless feel.
+                        </p>
+                        <p><a href="#">Buy in bundle</a> &nbsp; or separately <span>&rarr;</span></p>
+                    </section>
+                    <section class="content_img_row">
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
+                            <p class="price">$189</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge blue">Best seller</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                5.0
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
+                            <p class="price">$349</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.0
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="section_content" id="walnut">
+                    <section class="content_text">
+                        <h2>Walnut</h2>
+                        <p>
+                            We designed the Walnut wood finish to match seamlessly with the original OEM Dashboard in the 
+                            black interior version of the Tesla Model 3 / Y. Walnut is a timeless and classic wood finish, 
+                            ideal to complete your Tesla interior.
+                        </p>
+                        <p><a href="#">Buy in bundle</a> &nbsp; or separately <span>&rarr;</span></p>
+                    </section>
+                    <section class="content_img_row">
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
+                            <p class="price">$189</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge blue">Best seller</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                5.0
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
+                            <p class="price">$349</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.0
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="section_content" id="black-ash">
+                    <section class="content_text">
+                        <h2>Black Ash</h2>
+                        <p>
+                            Black Ash is the ultimate luxurious accessory for your Tesla Model 3 or Y. 
+                            This sophisticated matte black wood finish was meticulously designed to 
+                            provide your tesla interior a modern and prestigious look.
+                        </p>
+                        <p><a href="#">Buy in bundle</a> &nbsp; or separately <span>&rarr;</span></p>
+                    </section>
+                    <section class="content_img_row">
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
+                            <p class="price">$189</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge blue">Best seller</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                5.0
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
+                            <p class="price">$349</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.0
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="section_content" id="maple">
+                    <section class="content_text">
+                        <h2>Maple</h2>
+                        <p>
+                            Maple is an elegant and delicate wood finish, known for its golden white look. 
+                            Achieve a quintessential interior aesthetic with a touch of Nordic design.
+                        </p>
+                        <p><a href="#">Buy in bundle</a> &nbsp; or separately <span>&rarr;</span></p>
+                    </section>
+                    <section class="content_img_row">
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03051-2_298x350_crop_center.jpg?v=1667570399" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 2 - Ebony</a>
+                            <p class="price">$189</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge blue">Best seller</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/DSC03104_596x700_crop_center.jpg?v=1641598689" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Center Console Gen. 1 - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                5.0
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4441_bb04fd5c-91cc-4ef5-b004-1f54a1aa1326_596x700_crop_center.jpg?v=1667575668" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Dashboard - Ebony</a>
+                            <p class="price">$349</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.9
+                            </div>
+                            <span class="badge yellow">Top rated</span>
+                        </div>
+                        <div class="content_card">
+                            <a href="#"><img class="content_card_img" src="https://hillsmade.com/cdn/shop/products/IMG_4574copie_596x700_crop_center.jpg?v=1676532867" alt=""></a>
+                            <a href="#" class="content_card_title">Wood Door Panels - Ebony</a>
+                            <p class="price">$219</p>
+                            <div class="stars">
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                <img width="10" height="10" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                                4.0
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </section>
+
+    <script>
+        const content = document.querySelectorAll('.content_img_row');
+        const content_text = document.querySelectorAll('.content_text');
+        window.addEventListener("scroll", (e) => {
+            e.preventDefault();
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    content_text.forEach((contenttext) => {
+                        contenttext.style.overflow = 'auto';
+                        document.body.overflow = 'hidden';
+                    })
+                }
+                else{
+                    content_text.forEach((contenttext) => {
+                        contenttext.style.overflow = 'inherit';
+                        document.body.overflow = 'hidden';
+                    })
+                }
+            })
+        }, { threshold: 0.5 });
+            content.forEach((item) => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
